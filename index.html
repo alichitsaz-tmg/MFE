@@ -969,78 +969,212 @@
         </div>
     </section>
 
-    <!-- Troubleshooting -->
-    <section id="troubleshooting" style="background: #f8f8f8; padding: 50px 0;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Troubleshooting</h2>
-                <p>Common issues and solutions</p>
+    <!-- Troubleshooting - INTERNAL (iPad) -->
+    <div class="content-section active" id="internal-troubleshooting">
+        <section id="troubleshooting" style="background: #f8f8f8; padding: 50px 0;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Troubleshooting — iPad</h2>
+                    <p>Common issues and solutions for internal fitters</p>
+                </div>
+
+                <div class="troubleshooting-grid">
+                    <div class="troubleshoot-card">
+                        <h3>🚫 Launch Monitor Not Connecting</h3>
+                        <ol>
+                            <li><strong>Check Wi-Fi network:</strong> Go to iPad Settings → Wi-Fi. You must be connected to the <em>monitor's</em> Wi-Fi, not your regular network or venue Wi-Fi.</li>
+                            <li><strong>TrackMan:</strong> Connect to SSID "TrackMan_####" with password: <code>password</code></li>
+                            <li><strong>GCQuad:</strong> Connect to SSID "GCQuad_####" with password: <code>FSSPORTS</code></li>
+                            <li><strong>Using Bluetooth?</strong> Ensure the device is paired in iOS Bluetooth settings.</li>
+                            <li><strong>Check monitor status:</strong> Is it powered on with solid indicator lights (not blinking)?</li>
+                            <li><strong>Restart sequence:</strong> Force close MFE, power cycle the monitor, reconnect to monitor Wi-Fi, relaunch MFE.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>❌ App Crashes on Launch</h3>
+                        <ol>
+                            <li><strong>Check iOS version:</strong> Did you recently update iOS? New iOS releases may not be certified yet. Contact IT to verify compatibility.</li>
+                            <li><strong>Force close and relaunch:</strong> Swipe up to close the app completely, then reopen.</li>
+                            <li><strong>Check for app updates:</strong> Open Company Portal or the install link to see if updates are available.</li>
+                            <li><strong>Reinstall the app:</strong> Uninstall and reinstall from <a href="https://my.taylormadegolf.com/myFittingExp/#/tmsupport/ios" target="_blank">my.taylormadegolf.com/myFittingExp/#/tmsupport/ios</a></li>
+                            <li><strong>⚠️ Before reinstalling:</strong> Ensure all fitting data is synced — offline data will be erased on reinstall.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>🔑 Login Issues</h3>
+                        <ol>
+                            <li><strong>Verify credentials:</strong> Use your TaylorMade MFE credentials (usually your email).</li>
+                            <li><strong>Check CAPS LOCK</strong> and re-enter password carefully.</li>
+                            <li><strong>Confirm internet:</strong> Ensure iPad has internet access (cellular or Wi-Fi to a network with internet).</li>
+                            <li><strong>Account locked?</strong> Too many failed attempts will lock the account. Contact TaylorMade IT to unlock, or wait for auto-unlock.</li>
+                            <li><strong>Forgot password?</strong> Contact TaylorMade IT for a password reset.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>⚙️ App Permissions Denied</h3>
+                        <ol>
+                            <li>If you denied Bluetooth, Local Network, or Location permissions on first launch, the app cannot connect to monitors.</li>
+                            <li>Go to iPad <strong>Settings → Privacy & Security</strong></li>
+                            <li>Find <strong>Bluetooth</strong>, <strong>Local Network</strong>, and <strong>Location Services</strong></li>
+                            <li>Ensure MFE (myFittingExp) is enabled for each</li>
+                            <li>Restart the MFE app</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>📊 Data Not Syncing</h3>
+                        <ol>
+                            <li><strong>Were you offline?</strong> If the fitting was done without internet, data syncs when you're back online. Open the app with internet to trigger sync.</li>
+                            <li><strong>Check sync status:</strong> Look for a sync indicator in the app (spinning icon or Settings → Sync).</li>
+                            <li><strong>Verify account:</strong> If data shows synced but missing online, confirm you're checking the correct account on the website.</li>
+                            <li><strong>Still missing?</strong> Escalate to TaylorMade IT — may require server-side investigation.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>📞 Still Need Help?</h3>
+                        <p style="margin-bottom: 15px;">If these steps don't resolve your issue:</p>
+                        <p><strong>Call:</strong> <a href="tel:800-864-7230" style="font-size: 1.2rem;">800-864-7230</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a></p>
+                        <p><strong>Hours:</strong> 6 AM - 6 PM PST, Mon-Fri</p>
+                    </div>
+                </div>
             </div>
+        </section>
+    </div>
 
-            <div class="troubleshooting-grid">
-                <div class="troubleshoot-card">
-                    <h3>🚫 Launch Monitor Not Connecting</h3>
-                    <ol>
-                        <li><strong>Windows:</strong> Is Connector installed and running? Check system tray. If missing, <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">download here</a>.</li>
-                        <li><strong>iPad:</strong> Connected to monitor's Wi-Fi (not regular Wi-Fi)?</li>
-                        <li>Did you click <strong>YES</strong> on UAC prompts? (Windows)</li>
-                        <li>Is monitor powered on with solid indicator lights?</li>
-                        <li><strong>Try:</strong> Close MFE, power cycle monitor, relaunch MFE.</li>
-                    </ol>
+    <!-- Troubleshooting - RETAIL (Windows) -->
+    <div class="content-section" id="retail-troubleshooting">
+        <section style="background: #f8f8f8; padding: 50px 0;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Troubleshooting — Windows</h2>
+                    <p>Common issues and solutions for retail partners</p>
                 </div>
 
-                <div class="troubleshoot-card">
-                    <h3>❌ App Won't Launch / Crashes</h3>
-                    <ol>
-                        <li>Force close app (Task Manager on Windows)</li>
-                        <li>Restart your device</li>
-                        <li>Check for app updates (Microsoft Store or App Store)</li>
-                        <li>Windows: If SmartScreen blocks, click "Run anyway"</li>
-                        <li>iPad: If crashes after iOS update, may need app update — contact IT</li>
-                    </ol>
-                </div>
+                <div class="troubleshooting-grid">
+                    <div class="troubleshoot-card">
+                        <h3>🚫 Launch Monitor Not Connecting</h3>
+                        <ol>
+                            <li><strong>Is Connector installed?</strong> Check system tray for TaylorMade Connector icon. If missing, <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">download and install</a>.</li>
+                            <li><strong>Is Connector running?</strong> If not in system tray, restart MFE (it launches the connector). Or open Services (services.msc) and start "TaylorMade Connector Service".</li>
+                            <li><strong>UAC Approval:</strong> Did you click "Yes" on the Windows UAC prompt? If you denied it, uninstall and reinstall the Connector.</li>
+                            <li><strong>Check connection type:</strong>
+                                <ul style="margin-top: 8px; margin-left: 20px;">
+                                    <li><strong>USB:</strong> Try a different port or cable. Check Device Manager — GCQuad should appear under network adapters.</li>
+                                    <li><strong>Ethernet:</strong> Verify cable is connected. PC should get an IP (TrackMan typically 192.168.51.x).</li>
+                                    <li><strong>Wi-Fi:</strong> Ensure PC is on the monitor's Wi-Fi network, not auto-reconnected to another network.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Monitor ready?</strong> Indicator lights should be solid (not blinking). Power cycle if needed.</li>
+                            <li><strong>Restart sequence:</strong> Close MFE completely, power cycle monitor, relaunch MFE.</li>
+                        </ol>
+                    </div>
 
-                <div class="troubleshoot-card">
-                    <h3>🔑 Can't Login</h3>
-                    <ol>
-                        <li>Verify correct credentials (retail accounts ≠ internal TM accounts)</li>
-                        <li>Check CAPS LOCK</li>
-                        <li>Confirm internet connection</li>
-                        <li>Account locked? Contact TaylorMade IT to unlock</li>
-                        <li>Need password reset? Contact TaylorMade IT</li>
-                    </ol>
-                </div>
+                    <div class="troubleshoot-card">
+                        <h3>⬇️ Can't Install from Microsoft Store</h3>
+                        <ol>
+                            <li><strong>Verify Windows 11:</strong> MFE requires Windows 11 (64-bit). Windows 10 is not officially supported.</li>
+                            <li><strong>Store disabled?</strong> If your organization disabled Microsoft Store, contact your IT admin to enable it or perform an offline install.</li>
+                            <li><strong>Sign in required:</strong> You must be signed into the Store with a Microsoft account to install.</li>
+                            <li><strong>Try direct link:</strong> <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank">MFE on Microsoft Store</a></li>
+                            <li><strong>Check internet:</strong> Store errors sometimes occur due to connectivity issues.</li>
+                        </ol>
+                    </div>
 
-                <div class="troubleshoot-card">
-                    <h3>🔌 Connector Issues (Windows)</h3>
-                    <ol>
-                        <li><strong>Not installed:</strong> <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">Download and install</a></li>
-                        <li><strong>Won't start:</strong> Open Services (services.msc), find "TaylorMade Connector Service", Start it</li>
-                        <li><strong>Denied UAC:</strong> Uninstall from Control Panel, reinstall, click YES</li>
-                    </ol>
-                </div>
+                    <div class="troubleshoot-card">
+                        <h3>🔒 No Admin Rights for Connector</h3>
+                        <ol>
+                            <li>The Connector installation requires administrator privileges (one-time).</li>
+                            <li><strong>Option 1:</strong> Have your IT admin enter credentials at the UAC prompt.</li>
+                            <li><strong>Option 2:</strong> Have IT run the Connector installer with "Run as Administrator".</li>
+                            <li><strong>After install:</strong> Day-to-day use does not require admin rights.</li>
+                            <li><strong>Still blocked?</strong> Contact TaylorMade IT to discuss alternatives.</li>
+                        </ol>
+                    </div>
 
-                <div class="troubleshoot-card">
-                    <h3>🔄 Complete Reinstall (Windows)</h3>
-                    <ol>
-                        <li><strong>Uninstall MFE:</strong> Settings → Apps → MFE → Uninstall</li>
-                        <li><strong>Uninstall Connector:</strong> Control Panel → Programs → TaylorMade Connector Service → Uninstall</li>
-                        <li>Restart PC</li>
-                        <li>Reinstall <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank">MFE from Store</a></li>
-                        <li>Reinstall <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">Connector</a></li>
-                    </ol>
-                </div>
+                    <div class="troubleshoot-card">
+                        <h3>❌ App Won't Launch or Crashes</h3>
+                        <ol>
+                            <li><strong>Windows SmartScreen blocking?</strong> If you see "Windows protected your PC", click "More info" → "Run anyway".</li>
+                            <li><strong>Check Event Viewer:</strong> Windows Logs → Application for error entries at the crash time. Note the faulting module for IT.</li>
+                            <li><strong>Recent update?</strong> If crashes started after an app update, try reinstalling via Store "Repair" or uninstall/reinstall.</li>
+                            <li><strong>Antivirus blocking?</strong> Check if AV is quarantining MFE. Whitelist the app if needed.</li>
+                            <li><strong>Restart PC</strong> and try again.</li>
+                        </ol>
+                    </div>
 
-                <div class="troubleshoot-card">
-                    <h3>📞 Still Need Help?</h3>
-                    <p style="margin-bottom: 15px;">If these steps don't resolve your issue:</p>
-                    <p><strong>Call:</strong> <a href="tel:800-864-7230" style="font-size: 1.2rem;">800-864-7230</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a></p>
-                    <p><strong>Hours:</strong> 6 AM - 6 PM PST, Mon-Fri</p>
+                    <div class="troubleshoot-card">
+                        <h3>⏳ Stuck on "Connecting to Connector Service"</h3>
+                        <ol>
+                            <li>This means the Connector service isn't running properly.</li>
+                            <li>Open <strong>Services</strong> (Win+R, type "services.msc", Enter)</li>
+                            <li>Find <strong>"TaylorMade Connector Service"</strong></li>
+                            <li>Check if it's Started. If not, right-click → Start.</li>
+                            <li>If it fails to start, note the error and reinstall the Connector.</li>
+                            <li><strong>Still stuck?</strong> Restart PC after Connector install to finalize service registration.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>🔑 Login Issues</h3>
+                        <ol>
+                            <li><strong>Correct credentials?</strong> Retail accounts are different from internal TaylorMade employee accounts.</li>
+                            <li><strong>New user?</strong> Check for an activation email from TaylorMade. You may need to activate your account first.</li>
+                            <li><strong>Check CAPS LOCK</strong> and re-enter password carefully.</li>
+                            <li><strong>Account locked?</strong> Contact TaylorMade IT to unlock (or wait for auto-unlock).</li>
+                            <li><strong>Server error with correct credentials?</strong> Escalate to Tier 2 — possible backend issue.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>🔌 Connector Service Problems</h3>
+                        <ol>
+                            <li><strong>Not installed:</strong> <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">Download here</a>, run installer, click "Yes" on UAC.</li>
+                            <li><strong>Won't start:</strong> Open Services (services.msc), find "TaylorMade Connector Service", right-click → Start.</li>
+                            <li><strong>Crashes on start:</strong> Note any error, then uninstall from Control Panel → Programs, reboot, reinstall.</li>
+                            <li><strong>Denied UAC earlier:</strong> Uninstall Connector, reinstall, and click "Yes" this time.</li>
+                            <li><strong>Check firewall:</strong> Ensure the Connector is allowed through Windows Firewall.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>🔄 Complete Reinstallation</h3>
+                        <p style="margin-bottom: 12px; font-weight: 600;">If issues persist after other troubleshooting:</p>
+                        <ol>
+                            <li><strong>Uninstall MFE:</strong> Settings → Apps → Installed Apps → Find MFE → Uninstall</li>
+                            <li><strong>Uninstall Connector:</strong> Control Panel → Programs and Features → TaylorMade Connector Service → Uninstall</li>
+                            <li><strong>Reboot</strong> the PC</li>
+                            <li><strong>Reinstall MFE:</strong> <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank">Microsoft Store</a></li>
+                            <li><strong>Reinstall Connector:</strong> Let MFE prompt you, or <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">download directly</a></li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>📊 Data Not Syncing</h3>
+                        <ol>
+                            <li><strong>Check internet:</strong> Can you browse websites? MFE needs internet for cloud sync.</li>
+                            <li><strong>Check sync status:</strong> Look in app Settings → Sync for pending data indicator.</li>
+                            <li><strong>Firewall:</strong> Ensure *.taylormadegolf.com is allowed. Try a mobile hotspot as a test.</li>
+                            <li><strong>Verify account:</strong> If synced but not showing on website, confirm you're checking the correct account.</li>
+                            <li><strong>Data loss suspected?</strong> Escalate to TaylorMade IT immediately for server-side investigation.</li>
+                        </ol>
+                    </div>
+
+                    <div class="troubleshoot-card">
+                        <h3>📞 Still Need Help?</h3>
+                        <p style="margin-bottom: 15px;">If these steps don't resolve your issue:</p>
+                        <p><strong>Call:</strong> <a href="tel:800-864-7230" style="font-size: 1.2rem;">800-864-7230</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a></p>
+                        <p><strong>Hours:</strong> 6 AM - 6 PM PST, Mon-Fri</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Quick Links -->
     <section class="container section">
@@ -1070,9 +1204,10 @@
             document.querySelectorAll('.version-btn').forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
 
-            // Update content
+            // Update main content sections
             document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
             document.getElementById(version + '-content').classList.add('active');
+            document.getElementById(version + '-troubleshooting').classList.add('active');
 
             // Scroll to installation
             document.getElementById('installation-' + version).scrollIntoView({ behavior: 'smooth', block: 'start' });
