@@ -54,11 +54,15 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #000000;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
         }
 
         .nav-links {
@@ -606,7 +610,9 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">TaylorMade</div>
+            <a href="https://www.taylormadegolf.com" target="_blank" class="logo">
+                <img src="mfe-logo.png" alt="My Fitting EXP">
+            </a>
             <ul class="nav-links">
                 <li><a href="#installation">Installation</a></li>
                 <li><a href="#monitors">Launch Monitors</a></li>
