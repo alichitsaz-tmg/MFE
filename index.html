@@ -1411,9 +1411,6 @@
             // Hide overlay
             document.getElementById('platform-overlay').classList.add('hidden');
             
-            // Save preference
-            localStorage.setItem('mfe-platform', platform);
-            
             // Apply platform
             applyPlatform(platform);
         }
@@ -1433,9 +1430,6 @@
                     }
                 });
             }
-
-            // Save preference
-            localStorage.setItem('mfe-platform', platform);
             
             // Apply platform
             applyPlatform(platform);
@@ -1460,21 +1454,15 @@
             });
         }
 
-        // Check for URL parameter or saved preference on load
+        // Check for URL parameter on load
         function initPlatform() {
             const urlParams = new URLSearchParams(window.location.search);
             const urlPlatform = urlParams.get('platform');
-            const savedPlatform = localStorage.getItem('mfe-platform');
             
             if (urlPlatform === 'internal' || urlPlatform === 'retail') {
-                // URL parameter takes priority
+                // URL parameter skips the selector
                 document.getElementById('platform-overlay').classList.add('hidden');
                 applyPlatform(urlPlatform);
-                localStorage.setItem('mfe-platform', urlPlatform);
-            } else if (savedPlatform) {
-                // Use saved preference
-                document.getElementById('platform-overlay').classList.add('hidden');
-                applyPlatform(savedPlatform);
             }
             // Otherwise, overlay stays visible for user to choose
         }
