@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MFE Support Portal | TaylorMade Golf</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -12,52 +13,40 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --tm-black: #000000;
+            --tm-white: #ffffff;
+            --tm-red: #c41e3a;
+            --tm-gray: #f5f5f5;
+            --tm-border: #e0e0e0;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
-            font-family: 'Work Sans', 'Arial', sans-serif;
-            background: #ffffff;
-            color: #000000;
-            line-height: 1.6;
+            font-family: 'Work Sans', -apple-system, sans-serif;
+            background: var(--tm-white);
+            color: var(--tm-black);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background: #000000;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .top-bar a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Navigation */
-        nav {
-            background: #ffffff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        /* Header */
+        header {
+            background: var(--tm-black);
+            color: var(--tm-white);
+            padding: 15px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 30px;
+            flex-shrink: 0;
         }
 
         .logo {
-            height: 45px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
+            height: 40px;
         }
 
         .logo img {
@@ -65,1158 +54,1072 @@
             width: auto;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #000000;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links a:hover {
-            color: #666666;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #000000 0%, #2d2d2d 100%);
-            color: #ffffff;
-            padding: 60px 30px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-
-        /* Version Toggle */
-        .version-toggle {
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            margin-top: 30px;
-        }
-
-        .version-btn {
-            background: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            padding: 20px 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .version-btn:first-child {
-            border-right: none;
-        }
-
-        .version-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .version-btn.active {
-            background: #ffffff;
-            color: #000000;
-        }
-
-        .version-subtitle {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin-top: 5px;
-            font-weight: 400;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 30px;
-        }
-
-        /* Section Styles */
-        .section {
-            margin-bottom: 60px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: #666666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        /* Download Buttons */
-        .download-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        .download-btn {
-            background: #000000;
-            color: #ffffff;
-            padding: 20px 40px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .download-btn:hover {
-            background: #333333;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .download-btn.primary {
-            background: #ffffff;
-            color: #000000;
-            border: 3px solid #000000;
-        }
-
-        .download-btn.primary:hover {
-            background: #f0f0f0;
-        }
-
-        /* Warning Banner */
-        .warning-banner {
-            background: #ff6b00;
-            color: #ffffff;
-            padding: 20px;
-            margin: 30px 0;
-            font-weight: 600;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .warning-banner strong {
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 900;
-        }
-
-        /* Install Grid */
-        .install-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        .install-step {
-            background: #000000;
-            color: #ffffff;
-            padding: 35px;
-            position: relative;
-        }
-
-        .step-number {
-            position: absolute;
-            top: -18px;
-            left: 35px;
-            background: #ffffff;
-            color: #000000;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
+        .header-right {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: 900;
+            gap: 25px;
         }
 
-        .install-step h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            padding-top: 8px;
-            text-transform: uppercase;
+        .header-contact {
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
 
-        .install-step ol,
-        .install-step ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
+        .header-contact a {
+            color: var(--tm-white);
+            text-decoration: none;
         }
 
-        .install-step li {
-            margin: 10px 0;
-            line-height: 1.7;
-        }
-
-        .install-step a {
-            color: #ffffff;
-            font-weight: 700;
+        .header-contact a:hover {
             text-decoration: underline;
         }
 
-        /* Requirements Grid */
-        .requirements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+        /* Platform Toggle */
+        .platform-toggle {
+            display: flex;
+            gap: 0;
         }
 
-        .requirement-card {
-            background: #f8f8f8;
-            padding: 25px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-        }
-
-        .requirement-card h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .requirement-card p {
-            color: #666666;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* Support Grid */
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .support-card {
-            background: #f8f8f8;
-            padding: 35px;
-            border: 1px solid #e0e0e0;
-            transition: all 0.3s ease;
-        }
-
-        .support-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .support-card.primary {
-            background: #000000;
-            color: #ffffff;
-            border: 3px solid #000000;
-        }
-
-        .support-card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .support-card h4 {
+        .platform-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.7);
+            padding: 8px 20px;
+            font-family: inherit;
             font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .support-card ul {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .support-card ul li {
-            padding: 6px 0 6px 18px;
-            position: relative;
-            font-size: 0.9rem;
-        }
-
-        .support-card ul li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        .support-card.primary ul li:before {
-            color: #ffffff;
-        }
-
-        .contact-info {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 12px;
-            margin: 12px 0;
-        }
-
-        .support-card.primary .contact-info {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-info strong {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .contact-info a {
-            color: inherit;
-            text-decoration: none;
+        .platform-btn:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .platform-btn:last-child {
+            border-radius: 0 4px 4px 0;
+            border-left: none;
+        }
+
+        .platform-btn.active {
+            background: var(--tm-white);
+            color: var(--tm-black);
+            border-color: var(--tm-white);
+        }
+
+        .platform-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            background: var(--tm-gray);
+            border-bottom: 1px solid var(--tm-border);
+            display: flex;
+            padding: 0 30px;
+            flex-shrink: 0;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 18px 25px;
+            font-family: inherit;
+            font-size: 0.9rem;
             font-weight: 600;
-            font-size: 1rem;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .contact-info a:hover {
-            text-decoration: underline;
+        .tab-btn:hover {
+            color: var(--tm-black);
         }
 
-        .priority-badge {
-            display: inline-block;
-            background: #ffffff;
-            color: #000000;
-            padding: 6px 14px;
-            font-weight: 700;
-            font-size: 0.8rem;
+        .tab-btn.active {
+            color: var(--tm-black);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--tm-black);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+        }
+
+        .tab-panel {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Panel Header */
+        .panel-header {
+            margin-bottom: 30px;
+        }
+
+        .panel-header h1 {
+            font-size: 2rem;
+            font-weight: 900;
             text-transform: uppercase;
-            margin-top: 10px;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
 
-        /* Troubleshooting */
-        .troubleshooting-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+        .panel-header p {
+            color: #666;
+            font-size: 1.1rem;
         }
 
-        .troubleshoot-card {
-            background: #f8f8f8;
-            padding: 25px;
-            border-left: 5px solid #000000;
-        }
-
-        .troubleshoot-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .troubleshoot-card ol {
-            margin-left: 20px;
-        }
-
-        .troubleshoot-card li {
-            margin: 10px 0;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .troubleshoot-card a {
-            color: #000000;
-            font-weight: 600;
-        }
-
-        /* Launch Monitor Section */
-        .monitor-grid {
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
-            margin-top: 30px;
         }
 
-        .monitor-card {
-            background: #f8f8f8;
-            padding: 25px;
-            border: 1px solid #e0e0e0;
+        .card {
+            background: var(--tm-gray);
+            border: 1px solid var(--tm-border);
+            padding: 30px;
         }
 
-        .monitor-card h3 {
-            font-size: 1.4rem;
+        .card.dark {
+            background: var(--tm-black);
+            color: var(--tm-white);
+            border-color: var(--tm-black);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--tm-border);
+        }
+
+        .card.dark .card-header {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .card-header h3 {
+            font-size: 1.1rem;
             font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card-badge {
+            background: var(--tm-red);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: auto;
+        }
+
+        .card ol, .card ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .card li {
+            margin: 6px 0;
+        }
+
+        .card p {
+            line-height: 1.7;
             margin-bottom: 12px;
-            text-transform: uppercase;
         }
 
-        .monitor-card p {
-            color: #666666;
-            line-height: 1.6;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .credential-box {
-            background: #000000;
-            color: #ffffff;
-            padding: 12px;
-            margin: 12px 0;
-            font-family: monospace;
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--tm-black);
+            color: var(--tm-white);
+            padding: 14px 24px;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 0.9rem;
+            transition: background 0.2s ease;
+            margin-top: 15px;
         }
 
-        .credential-box strong {
-            display: block;
-            margin-bottom: 4px;
-            font-family: 'Work Sans', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.8rem;
+        .btn:hover {
+            background: #333;
+        }
+
+        .card.dark .btn {
+            background: var(--tm-white);
+            color: var(--tm-black);
+        }
+
+        .card.dark .btn:hover {
+            background: #eee;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-group .btn {
+            margin-top: 0;
         }
 
         /* Info Box */
         .info-box {
-            background: #f0f7ff;
+            background: #e8f4fd;
             border-left: 4px solid #0066cc;
             padding: 15px 20px;
-            margin: 20px 0;
-            font-size: 0.95rem;
+            margin-top: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
         }
 
-        .info-box strong {
-            display: block;
-            margin-bottom: 8px;
+        .info-box.warning {
+            background: #fff8e6;
+            border-left-color: #f5a623;
         }
 
-        /* Completion Banner */
-        .completion-banner {
-            background: #000;
-            color: #fff;
-            padding: 25px;
+        .info-box i {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Credentials Table */
+        .cred-table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+        }
+
+        .cred-table th, .cred-table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--tm-border);
+        }
+
+        .card.dark .cred-table th,
+        .card.dark .cred-table td {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .cred-table th {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cred-table code {
+            background: rgba(0,0,0,0.1);
+            padding: 3px 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .card.dark .cred-table code {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* Support Cards */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .support-card {
             text-align: center;
-            margin-top: 30px;
+            padding: 30px;
+            background: var(--tm-gray);
+            border: 1px solid var(--tm-border);
         }
 
-        .completion-banner h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
+        .support-card.primary {
+            background: var(--tm-black);
+            color: var(--tm-white);
+            grid-column: 1 / -1;
         }
 
-        /* Footer */
-        footer {
-            background: #000000;
-            color: #ffffff;
-            padding: 40px 30px;
-            text-align: center;
-        }
-
-        footer h3 {
-            font-size: 1.6rem;
-            font-weight: 900;
-            margin-bottom: 12px;
+        .support-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 15px 0 10px;
             text-transform: uppercase;
         }
 
-        footer a {
-            color: #ffffff;
+        .support-card .phone {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .support-card a {
+            color: inherit;
             text-decoration: none;
         }
 
-        footer a:hover {
+        .support-card a:hover {
             text-decoration: underline;
         }
 
+        .support-card .hours {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        /* Troubleshooting */
+        .trouble-item {
+            background: var(--tm-gray);
+            border-left: 4px solid var(--tm-black);
+            padding: 20px 25px;
+            margin-bottom: 15px;
+        }
+
+        .trouble-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .trouble-item p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .trouble-item .solution {
+            background: rgba(0,0,0,0.05);
+            padding: 10px 15px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--tm-black);
+            color: var(--tm-white);
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+
+        .quick-link:hover {
+            background: #333;
+        }
+
+        .quick-link.secondary {
+            background: #555;
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .version-toggle {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .version-btn {
-                border: 2px solid #ffffff;
-            }
-
-            .version-btn:first-child {
-                border-right: 2px solid #ffffff;
-                border-bottom: none;
-            }
-
-            .troubleshooting-grid {
+        @media (max-width: 900px) {
+            .support-grid {
                 grid-template-columns: 1fr;
             }
 
-            .download-buttons {
+            .support-card.primary {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
                 flex-direction: column;
-                align-items: center;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .header-right {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .tab-nav {
+                padding: 0 10px;
+                overflow-x: auto;
+            }
+
+            .tab-btn {
+                padding: 15px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+
+            .tab-btn span {
+                display: none;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        TaylorMade IT: <a href="tel:800-864-7230">800-864-7230</a> | <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a> | 6 AM–6 PM PST
-    </div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="https://www.taylormadegolf.com" target="_blank" class="logo">
-                <img src="mfe-logo.png" alt="My Fitting EXP">
-            </a>
-            <ul class="nav-links">
-                <li><a href="#installation">Installation</a></li>
-                <li><a href="#monitors">Launch Monitors</a></li>
-                <li><a href="#support">Support</a></li>
-                <li><a href="#troubleshooting">Troubleshooting</a></li>
-            </ul>
+    <!-- Header -->
+    <header>
+        <a href="https://www.taylormadegolf.com" target="_blank" class="logo">
+            <img src="mfe-logo.png" alt="My Fitting EXP">
+        </a>
+
+        <div class="header-right">
+            <div class="header-contact">
+                <a href="tel:800-864-7230">800-864-7230</a> · 
+                <a href="mailto:MFE@tmgolf.freshservice.com">MFE@tmgolf.freshservice.com</a>
+            </div>
+
+            <div class="platform-toggle">
+                <button class="platform-btn active" onclick="setPlatform('internal')">Internal (iPad)</button>
+                <button class="platform-btn" onclick="setPlatform('retail')">Retail (Windows)</button>
+            </div>
         </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="showTab('installation')">
+            <i data-lucide="download" style="width:18px;height:18px;"></i>
+            <span>Installation</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('monitors')">
+            <i data-lucide="radar" style="width:18px;height:18px;"></i>
+            <span>Launch Monitors</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('firmware')">
+            <i data-lucide="hard-drive" style="width:18px;height:18px;"></i>
+            <span>Firmware</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('troubleshooting')">
+            <i data-lucide="wrench" style="width:18px;height:18px;"></i>
+            <span>Troubleshooting</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('support')">
+            <i data-lucide="headset" style="width:18px;height:18px;"></i>
+            <span>Support</span>
+        </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>My Fitting EXP</h1>
-        <p>Support Portal</p>
-        
-        <div class="version-toggle">
-            <button class="version-btn active" onclick="showVersion('internal')">
-                Internal
-                <div class="version-subtitle">TaylorMade Fitters (iPad)</div>
-            </button>
-            <button class="version-btn" onclick="showVersion('retail')">
-                Retail Partners
-                <div class="version-subtitle">Windows App</div>
-            </button>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main class="main-content">
 
-    <!-- ==================== INTERNAL CONTENT ==================== -->
-    <div class="content-section active" id="internal-content">
-        
-        <!-- Installation -->
-        <section id="installation-internal" class="container section">
-            <div class="section-header">
-                <h2>Installation — iPad</h2>
-                <p>Get MFE running on your iPad</p>
-            </div>
-
-            <div class="download-buttons">
-                <a href="https://my.taylormadegolf.com/myFittingExp/#/tmsupport/ios" target="_blank" class="download-btn primary">📱 Install MFE for iPad</a>
-            </div>
-
-            <div class="install-grid">
-                <div class="install-step">
-                    <div class="step-number">1</div>
-                    <h3>Get the App</h3>
-                    <p>The MFE app is typically pre-installed on corporate iPads via MDM. If missing:</p>
-                    <ol>
-                        <li>Go to: <a href="https://my.taylormadegolf.com/myFittingExp/#/tmsupport/ios" target="_blank">my.taylormadegolf.com/myFittingExp/#/tmsupport/ios</a></li>
-                        <li>Follow the installation prompts</li>
-                        <li>Ensure iPad is running iOS/iPadOS 14 or higher</li>
-                    </ol>
+        <!-- INSTALLATION TAB -->
+        <div id="tab-installation" class="tab-panel active">
+            <!-- Internal (iPad) -->
+            <div class="platform-content internal">
+                <div class="panel-header">
+                    <h1>iPad Installation</h1>
+                    <p>For TaylorMade fitters using internal iPads</p>
                 </div>
 
-                <div class="install-step">
-                    <div class="step-number">2</div>
-                    <h3>Allow Permissions</h3>
-                    <p>On first launch, allow these permissions for launch monitor connectivity:</p>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <i data-lucide="tablet" style="width:24px;height:24px;"></i>
+                            <h3>Install MFE App</h3>
+                            <span class="card-badge">Step 1</span>
+                        </div>
+                        <ol>
+                            <li>Open Safari on your iPad</li>
+                            <li>Navigate to the install link below</li>
+                            <li>Sign in with your TaylorMade credentials</li>
+                            <li>Tap <strong>Install</strong> when prompted</li>
+                            <li>Wait for download to complete</li>
+                        </ol>
+                        <a href="https://my.taylormadegolf.com/myFittingExp/#/tmsupport/ios" target="_blank" class="btn">
+                            <i data-lucide="download" style="width:18px;height:18px;"></i>
+                            Install MFE for iPad
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i data-lucide="wifi" style="width:24px;height:24px;"></i>
+                            <h3>Connect to Monitor</h3>
+                            <span class="card-badge">Step 2</span>
+                        </div>
+                        <ol>
+                            <li>Power on your launch monitor</li>
+                            <li>Go to iPad <strong>Settings → Wi-Fi</strong></li>
+                            <li>Connect to the monitor's network:
+                                <ul>
+                                    <li>TrackMan: <code>TrackMan_####</code></li>
+                                    <li>GCQuad: <code>GCQuad_####</code></li>
+                                </ul>
+                            </li>
+                            <li>Enter the password when prompted</li>
+                            <li>Open MFE and verify connection</li>
+                        </ol>
+                    </div>
+
+                    <div class="card dark">
+                        <div class="card-header">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <h3>Requirements</h3>
+                        </div>
+                        <table class="cred-table">
+                            <tr>
+                                <th>Device</th>
+                                <td>iPad (company-managed)</td>
+                            </tr>
+                            <tr>
+                                <th>iOS</th>
+                                <td>Latest supported version</td>
+                            </tr>
+                            <tr>
+                                <th>Credentials</th>
+                                <td>TaylorMade account</td>
+                            </tr>
+                            <tr>
+                                <th>Connection</th>
+                                <td>Wi-Fi or Bluetooth</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retail (Windows) -->
+            <div class="platform-content retail" style="display:none;">
+                <div class="panel-header">
+                    <h1>Windows Installation</h1>
+                    <p>For retail partners using Windows PCs</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <i data-lucide="monitor" style="width:24px;height:24px;"></i>
+                            <h3>Install MFE App</h3>
+                            <span class="card-badge">Step 1</span>
+                        </div>
+                        <ol>
+                            <li>Open Microsoft Store on your PC</li>
+                            <li>Search for "My Fitting EXP" or use link below</li>
+                            <li>Click <strong>Get</strong> or <strong>Install</strong></li>
+                            <li>Wait for download to complete</li>
+                            <li>Launch MFE from Start menu</li>
+                        </ol>
+                        <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank" class="btn">
+                            <i data-lucide="download" style="width:18px;height:18px;"></i>
+                            Get from Microsoft Store
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i data-lucide="plug" style="width:24px;height:24px;"></i>
+                            <h3>Install Connector Service</h3>
+                            <span class="card-badge">Step 2</span>
+                        </div>
+                        <ol>
+                            <li>Download the Connector Service installer</li>
+                            <li>Run the installer (.exe file)</li>
+                            <li>Click <strong>Yes</strong> on UAC prompt (required)</li>
+                            <li>Wait for installation to complete</li>
+                            <li>Verify icon appears in system tray</li>
+                        </ol>
+                        <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank" class="btn">
+                            <i data-lucide="download" style="width:18px;height:18px;"></i>
+                            Download Connector Service
+                        </a>
+                        <div class="info-box warning">
+                            <i data-lucide="alert-triangle" style="width:18px;height:18px;"></i>
+                            <span><strong>Admin rights required</strong> for Connector installation. Contact your IT admin if blocked.</span>
+                        </div>
+                    </div>
+
+                    <div class="card dark">
+                        <div class="card-header">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <h3>Requirements</h3>
+                        </div>
+                        <table class="cred-table">
+                            <tr>
+                                <th>OS</th>
+                                <td>Windows 11 (64-bit)</td>
+                            </tr>
+                            <tr>
+                                <th>Admin</th>
+                                <td>Required for Connector</td>
+                            </tr>
+                            <tr>
+                                <th>Credentials</th>
+                                <td>Provided by TaylorMade</td>
+                            </tr>
+                            <tr>
+                                <th>Connection</th>
+                                <td>USB / Ethernet / Wi-Fi</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAUNCH MONITORS TAB -->
+        <div id="tab-monitors" class="tab-panel">
+            <div class="panel-header">
+                <h1>Launch Monitor Setup</h1>
+                <p>Connection settings and default credentials</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <i data-lucide="radar" style="width:24px;height:24px;"></i>
+                        <h3>TrackMan 4</h3>
+                    </div>
+                    <table class="cred-table">
+                        <tr>
+                            <th>Wi-Fi SSID</th>
+                            <td><code>TrackMan_####</code> (#### = serial)</td>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <td><code>password</code></td>
+                        </tr>
+                        <tr>
+                            <th>Connection</th>
+                            <td>Wi-Fi (iPad) / Ethernet (PC)</td>
+                        </tr>
+                    </table>
+                    <a href="https://support.trackman.com" target="_blank" class="btn">
+                        <i data-lucide="external-link" style="width:18px;height:18px;"></i>
+                        TrackMan Support
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i data-lucide="scan" style="width:24px;height:24px;"></i>
+                        <h3>GCQuad / QuadMAX</h3>
+                    </div>
+                    <table class="cred-table">
+                        <tr>
+                            <th>Wi-Fi SSID</th>
+                            <td><code>GCQuad_####</code> (#### = serial)</td>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <td><code>FSSPORTS</code></td>
+                        </tr>
+                        <tr>
+                            <th>Connection</th>
+                            <td>Wi-Fi / USB-C / Ethernet</td>
+                        </tr>
+                    </table>
+                    <a href="https://support.foresightsports.com/support/hardware/gcquad" target="_blank" class="btn">
+                        <i data-lucide="external-link" style="width:18px;height:18px;"></i>
+                        Foresight Support
+                    </a>
+                </div>
+
+                <div class="card dark">
+                    <div class="card-header">
+                        <i data-lucide="info" style="width:24px;height:24px;"></i>
+                        <h3>Connection Tips</h3>
+                    </div>
                     <ul>
-                        <li>✅ Bluetooth</li>
-                        <li>✅ Local Network</li>
-                        <li>✅ Location</li>
+                        <li><strong>iPad:</strong> Connect to monitor's Wi-Fi, not venue Wi-Fi</li>
+                        <li><strong>PC:</strong> USB is most reliable; Ethernet for TrackMan</li>
+                        <li>Ensure monitor shows <strong>solid</strong> indicator lights (not blinking)</li>
+                        <li>Power cycle monitor if connection issues persist</li>
+                        <li>Check that Connector Service is running (Windows)</li>
                     </ul>
-                    <p><strong>Denying these will cause connection issues.</strong></p>
-                </div>
-
-                <div class="install-step">
-                    <div class="step-number">3</div>
-                    <h3>Login</h3>
-                    <ol>
-                        <li>Open the <strong>myFittingExp</strong> app</li>
-                        <li>Enter your TaylorMade credentials (usually your email)</li>
-                        <li>Forgot password? Contact TaylorMade IT for reset</li>
-                    </ol>
-                </div>
-
-                <div class="install-step">
-                    <div class="step-number">4</div>
-                    <h3>Connect Launch Monitor</h3>
-                    <ol>
-                        <li>Power on your TrackMan or GCQuad</li>
-                        <li>Go to iPad <strong>Settings → Wi-Fi</strong></li>
-                        <li>Connect to the monitor's network (see credentials below)</li>
-                        <li>Return to MFE and initiate connection</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="completion-banner">
-                <h3>✅ Setup Complete</h3>
-                <p>You're ready to start fitting</p>
-            </div>
-        </section>
-
-        <!-- Requirements -->
-        <section style="background: #f8f8f8; padding: 50px 0;">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Requirements — iPad</h2>
-                </div>
-                <div class="requirements-grid">
-                    <div class="requirement-card">
-                        <h4>Device</h4>
-                        <p>iPad Air 2 or newer<br>iOS/iPadOS 14+<br>Bluetooth 4.0+</p>
-                    </div>
-                    <div class="requirement-card">
-                        <h4>Connectivity</h4>
-                        <p>Wi-Fi or Bluetooth for monitors<br>Internet for data sync<br>Hotspot for field events</p>
-                    </div>
-                    <div class="requirement-card">
-                        <h4>No Connector Needed</h4>
-                        <p>iPad connects natively to launch monitors via Wi-Fi or Bluetooth</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- ==================== RETAIL CONTENT ==================== -->
-    <div class="content-section" id="retail-content">
-        
-        <!-- Installation -->
-        <section id="installation-retail" class="container section">
-            <div class="section-header">
-                <h2>Installation — Windows</h2>
-                <p>Get MFE running on your Windows PC</p>
-            </div>
-
-            <div class="warning-banner">
-                <strong>⚠️ Admin Rights Required</strong>
-                The Connector Service installation requires administrator approval. Contact your IT team if needed.
-            </div>
-
-            <div class="download-buttons">
-                <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank" class="download-btn primary">📥 MFE from Microsoft Store</a>
-                <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank" class="download-btn primary">🔌 Connector Service</a>
-            </div>
-
-            <div class="install-grid">
-                <div class="install-step">
-                    <div class="step-number">1</div>
-                    <h3>Install MFE App</h3>
-                    <ol>
-                        <li>Open: <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank">MFE on Microsoft Store</a></li>
-                        <li>Click <strong>Get</strong> or <strong>Install</strong></li>
-                        <li>Sign in with a Microsoft account if prompted</li>
-                        <li>Wait for installation to complete</li>
-                    </ol>
-                </div>
-
-                <div class="install-step">
-                    <div class="step-number">2</div>
-                    <h3>Launch & Login</h3>
-                    <ol>
-                        <li>Open <strong>MFE for Retail</strong> from Start Menu</li>
-                        <li>Login with your retail credentials (provided by TaylorMade)</li>
-                        <li>Don't have credentials? Contact TaylorMade IT</li>
-                    </ol>
-                </div>
-
-                <div class="install-step">
-                    <div class="step-number">3</div>
-                    <h3>Select Launch Monitor</h3>
-                    <ol>
-                        <li>Go to <strong>Settings</strong> in the app</li>
-                        <li>Select your monitor: <strong>TrackMan</strong> or <strong>Foresight (GCQuad)</strong></li>
-                        <li>Choose connection type: <strong>Ethernet</strong> (best), <strong>USB</strong>, or <strong>Wi-Fi</strong></li>
-                    </ol>
-                </div>
-
-                <div class="install-step">
-                    <div class="step-number">4</div>
-                    <h3>Install Connector Service</h3>
-                    <ol>
-                        <li>When you first try to connect a monitor, MFE will prompt you to install the Connector</li>
-                        <li>Or download directly: <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">Connector Service</a></li>
-                        <li>Run the installer</li>
-                        <li>Click <strong>YES</strong> on the UAC prompt (requires admin)</li>
-                        <li>If you see a password prompt, contact your IT admin or TaylorMade IT at <a href="tel:800-864-7230">800-864-7230</a></li>
-                    </ol>
-                </div>
-
-                <div class="install-step">
-                    <div class="step-number">5</div>
-                    <h3>Restart & Connect</h3>
-                    <ol>
-                        <li><strong>Close MFE completely</strong> after installing Connector</li>
-                        <li>Relaunch MFE from Start Menu</li>
-                        <li>Connect your launch monitor (USB, Ethernet, or Wi-Fi)</li>
-                        <li>Click <strong>YES</strong> on any UAC prompts</li>
-                        <li>Monitor should show as <strong>Connected</strong></li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="completion-banner">
-                <h3>✅ Setup Complete</h3>
-                <p>You're ready to start fitting customers</p>
-            </div>
-        </section>
-
-        <!-- Requirements -->
-        <section style="background: #f8f8f8; padding: 50px 0;">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Requirements — Windows</h2>
-                </div>
-                <div class="requirements-grid">
-                    <div class="requirement-card">
-                        <h4>Operating System</h4>
-                        <p><strong>Windows 11 required</strong><br>64-bit, fully updated<br>Microsoft Store access</p>
-                    </div>
-                    <div class="requirement-card">
-                        <h4>Hardware</h4>
-                        <p>Intel i5 (8th gen+) or equivalent<br>8GB RAM<br>SSD recommended</p>
-                    </div>
-                    <div class="requirement-card">
-                        <h4>Network</h4>
-                        <p>Internet for sync<br>Allow *.taylormadegolf.com<br>Ethernet port for monitors</p>
-                    </div>
-                    <div class="requirement-card">
-                        <h4>Permissions</h4>
-                        <p>Admin rights for Connector install<br>Day-to-day use: no admin needed</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- ==================== SHARED CONTENT ==================== -->
-
-    <!-- Launch Monitors -->
-    <section id="monitors" style="background: #f8f8f8; padding: 50px 0;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Launch Monitor Connectivity</h2>
-                <p>Default credentials and connection info</p>
-            </div>
-
-            <div class="monitor-grid">
-                <div class="monitor-card">
-                    <h3>TrackMan 4</h3>
-                    <p>Connects via Wi-Fi hotspot or Ethernet. No USB data connection.</p>
-                    <div class="credential-box">
-                        <strong>Wi-Fi Credentials</strong>
-                        SSID: TrackMan_#### (unit serial)<br>
-                        Password: password
-                    </div>
-                    <p><strong>Support:</strong> <a href="tel:+18102259855">+1 (810) 225-9855</a> | <a href="https://support.trackman.com" target="_blank">support.trackman.com</a></p>
-                </div>
-
-                <div class="monitor-card">
-                    <h3>Foresight GCQuad</h3>
-                    <p>Connects via USB-C (Windows), Wi-Fi hotspot, or Bluetooth (iPad).</p>
-                    <div class="credential-box">
-                        <strong>Wi-Fi Credentials</strong>
-                        SSID: GCQuad_####<br>
-                        Password: FSSPORTS
-                    </div>
-                    <p><strong>Support:</strong> <a href="tel:+18588800179">+1 (858) 880-0179</a> | <a href="mailto:support@foresightsports.com">support@foresightsports.com</a></p>
-                </div>
-            </div>
-
-            <div class="info-box" style="margin-top: 30px;">
-                <strong>Legacy Monitors</strong>
-                Full Swing KIT and FlightScope models are also supported via Bluetooth/Wi-Fi. Refer to device manuals for credentials.
-            </div>
-        </div>
-    </section>
-
-    <!-- Support Section -->
-    <section id="support" class="container section">
-        <div class="section-header">
-            <h2>Get Support</h2>
-            <p>Contact the right team for your issue</p>
-        </div>
-
-        <div style="background: #000; color: #fff; padding: 25px; text-align: center; margin-bottom: 30px;">
-            <h3 style="font-size: 1.8rem; margin-bottom: 8px;">⚡ Not Sure Who to Call?</h3>
-            <p style="font-size: 1.2rem;">Start with TaylorMade IT — We'll route you if needed</p>
-        </div>
-
-        <div class="support-grid">
-            <div class="support-card primary">
-                <h3>TaylorMade IT</h3>
-                <div class="priority-badge">First Contact</div>
-                
-                <h4>When to Contact</h4>
-                <ul>
-                    <li>App won't launch or crashes</li>
-                    <li>Login or account issues</li>
-                    <li>Connector service problems</li>
-                    <li>Data sync issues</li>
-                    <li>Installation help</li>
-                    <li>Password resets</li>
-                </ul>
-
-                <div class="contact-info">
-                    <strong>📞 Phone</strong>
-                    <a href="tel:800-864-7230">800-864-7230</a>
-                </div>
-
-                <div class="contact-info">
-                    <strong>📧 Email</strong>
-                    <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a>
-                </div>
-
-                <div class="contact-info">
-                    <strong>⏰ Hours</strong>
-                    6 AM - 6 PM PST, Mon-Fri
-                </div>
-            </div>
-
-            <div class="support-card">
-                <h3>TrackMan</h3>
-                
-                <h4>When to Contact</h4>
-                <ul>
-                    <li>Device won't power on</li>
-                    <li>Not reading shots correctly</li>
-                    <li>Needs calibration</li>
-                    <li>Firmware updates</li>
-                    <li>Hardware damage</li>
-                </ul>
-
-                <div class="contact-info">
-                    <strong>📞 Phone</strong>
-                    <a href="tel:+18102259855">+1 (810) 225-9855</a>
-                </div>
-
-                <div class="contact-info">
-                    <strong>🌐 Portal</strong>
-                    <a href="https://support.trackman.com" target="_blank">support.trackman.com</a>
-                </div>
-            </div>
-
-            <div class="support-card">
-                <h3>Foresight Sports</h3>
-                <p style="font-style: italic; font-size: 0.9rem;">(GCQuad)</p>
-                
-                <h4>When to Contact</h4>
-                <ul>
-                    <li>Device won't power on</li>
-                    <li>Camera/sensor issues</li>
-                    <li>Needs calibration</li>
-                    <li>Not reading club markers</li>
-                    <li>Hardware damage</li>
-                </ul>
-
-                <div class="contact-info">
-                    <strong>📞 Phone</strong>
-                    <a href="tel:+18588800179">+1 (858) 880-0179</a>
-                </div>
-
-                <div class="contact-info">
-                    <strong>📧 Email</strong>
-                    <a href="mailto:support@foresightsports.com">support@foresightsports.com</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Troubleshooting - INTERNAL (iPad) -->
-    <div class="content-section active" id="internal-troubleshooting">
-        <section id="troubleshooting" style="background: #f8f8f8; padding: 50px 0;">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Troubleshooting — iPad</h2>
+        <!-- FIRMWARE TAB -->
+        <div id="tab-firmware" class="tab-panel">
+            <div class="panel-header">
+                <h1>Firmware Updates</h1>
+                <p>Keep your launch monitors up to date for best performance</p>
+            </div>
+
+            <!-- Foresight Section -->
+            <h2 style="font-size:1.3rem;text-transform:uppercase;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #000;">
+                <i data-lucide="scan" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;"></i>
+                GCQuad / QuadMAX (Foresight)
+            </h2>
+
+            <div class="cards-grid" style="margin-bottom:50px;">
+                <div class="card">
+                    <div class="card-header">
+                        <i data-lucide="monitor" style="width:24px;height:24px;"></i>
+                        <h3>Update via PC (Windows)</h3>
+                    </div>
+                    <ol>
+                        <li>Download the firmware updater from Foresight</li>
+                        <li>Power on your GCQuad / QuadMAX</li>
+                        <li>Connect to PC via <strong>USB-C cable</strong></li>
+                        <li>Run the firmware installer (.exe)</li>
+                        <li>Click <strong>Update</strong> when prompted</li>
+                        <li>Wait for completion — device may restart</li>
+                    </ol>
+                    <div class="btn-group">
+                        <a href="https://support.foresightsports.com/support/hardware/gcquad" target="_blank" class="btn">
+                            <i data-lucide="download" style="width:18px;height:18px;"></i>
+                            GCQuad Firmware
+                        </a>
+                        <a href="https://support.foresightsports.com/support/hardware/quadmax" target="_blank" class="btn">
+                            <i data-lucide="download" style="width:18px;height:18px;"></i>
+                            QuadMAX Firmware
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i data-lucide="tablet" style="width:24px;height:24px;"></i>
+                        <h3>Update via Foresight App (iPad)</h3>
+                    </div>
+                    <ol>
+                        <li>Download the <strong>Foresight App</strong> from App Store</li>
+                        <li>Power on your GCQuad / QuadMAX</li>
+                        <li>Open the app and connect via <strong>Bluetooth</strong></li>
+                        <li>If update available, you'll be prompted automatically</li>
+                        <li>Follow on-screen instructions to complete</li>
+                    </ol>
+                    <a href="https://apps.apple.com/us/app/foresight/id6446035078" target="_blank" class="btn">
+                        <i data-lucide="external-link" style="width:18px;height:18px;"></i>
+                        Foresight App (App Store)
+                    </a>
+                </div>
+
+                <div class="card dark">
+                    <div class="card-header">
+                        <i data-lucide="info" style="width:24px;height:24px;"></i>
+                        <h3>Foresight Version Info</h3>
+                    </div>
+                    <p><strong>GCQuad Firmware v4.1.0.1</strong></p>
+                    <p style="opacity:0.7;">Released November 2025</p>
+                    <ul style="margin-top:15px;">
+                        <li>Improved Bluetooth connectivity</li>
+                        <li>Better data capture for off-target shots</li>
+                        <li>Enhanced club data accuracy</li>
+                    </ul>
+                    <div class="info-box" style="background:rgba(255,255,255,0.1);border-left-color:#fff;">
+                        <i data-lucide="usb" style="width:18px;height:18px;"></i>
+                        <span>USB-C connection required for PC firmware updates</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TrackMan Section -->
+            <h2 style="font-size:1.3rem;text-transform:uppercase;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #000;">
+                <i data-lucide="radar" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;"></i>
+                TrackMan 4
+            </h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <i data-lucide="globe" style="width:24px;height:24px;"></i>
+                        <h3>Update via Web Interface</h3>
+                    </div>
+                    <ol>
+                        <li>Download the firmware (.bin file) from TrackMan Support</li>
+                        <li>Connect TrackMan 4 to PC via <strong>Ethernet or Wi-Fi</strong></li>
+                        <li>Open TrackMan Performance Studio (TPS)</li>
+                        <li>Go to <strong>Settings → Advanced → About → Show Device Web Interface</strong></li>
+                        <li>Click <strong>Login</strong> (no password required)</li>
+                        <li>Navigate to <strong>Administration → Upgrade</strong></li>
+                        <li>Select the .bin firmware file and click <strong>Upgrade</strong></li>
+                        <li>Wait for restart — green light indicates completion</li>
+                    </ol>
+                    <div class="btn-group">
+                        <a href="https://support.trackmangolf.com/hc/en-us/articles/40824844200475-TM4-Latest-Firmware-Download-2-9-4" target="_blank" class="btn">
+                            <i data-lucide="download" style="width:18px;height:18px;"></i>
+                            TrackMan 4 Firmware (v2.9.4)
+                        </a>
+                        <a href="https://support.trackmangolf.com/hc/en-us/articles/15357834117659-TM4-Download-Center-For-Trackman-Firmware" target="_blank" class="btn">
+                            <i data-lucide="folder" style="width:18px;height:18px;"></i>
+                            Firmware Download Center
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i data-lucide="link" style="width:24px;height:24px;"></i>
+                        <h3>Direct Web Interface URLs</h3>
+                    </div>
+                    <p style="margin-bottom:15px;">Access the TrackMan web interface directly based on your connection type:</p>
+                    <table class="cred-table">
+                        <tr>
+                            <th>Connection</th>
+                            <th>Web Interface URL</th>
+                        </tr>
+                        <tr>
+                            <td>Wi-Fi</td>
+                            <td><code>http://172.30.20.1/admin-upgrade.html</code></td>
+                        </tr>
+                        <tr>
+                            <td>USB Cable</td>
+                            <td><code>http://172.30.30.1/admin-upgrade.html</code></td>
+                        </tr>
+                        <tr>
+                            <td>Ethernet</td>
+                            <td>Via TPS: Settings → Advanced → About</td>
+                        </tr>
+                    </table>
+                    <a href="https://support.trackmangolf.com/hc/en-us/articles/5089896119963-How-To-Do-A-Firmware-Update-On-A-TM4" target="_blank" class="btn">
+                        <i data-lucide="video" style="width:18px;height:18px;"></i>
+                        Video Tutorial
+                    </a>
+                </div>
+
+                <div class="card dark">
+                    <div class="card-header">
+                        <i data-lucide="info" style="width:24px;height:24px;"></i>
+                        <h3>TrackMan Version Info</h3>
+                    </div>
+                    <p><strong>TrackMan 4 Firmware v2.9.4</strong></p>
+                    <p style="opacity:0.7;">Latest Release</p>
+                    <ul style="margin-top:15px;">
+                        <li>Improved spin tracking at high ball speeds</li>
+                        <li>System optimizations</li>
+                    </ul>
+                    <div class="info-box" style="background:rgba(255,255,255,0.1);border-left-color:#fff;">
+                        <i data-lucide="check-circle" style="width:18px;height:18px;"></i>
+                        <span>Verify version in TPS: Settings → Advanced → About</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TROUBLESHOOTING TAB -->
+        <div id="tab-troubleshooting" class="tab-panel">
+            <!-- Internal (iPad) -->
+            <div class="platform-content internal">
+                <div class="panel-header">
+                    <h1>iPad Troubleshooting</h1>
                     <p>Common issues and solutions for internal fitters</p>
                 </div>
 
-                <div class="troubleshooting-grid">
-                    <div class="troubleshoot-card">
-                        <h3>🚫 Launch Monitor Not Connecting</h3>
-                        <ol>
-                            <li><strong>Check Wi-Fi network:</strong> Go to iPad Settings → Wi-Fi. You must be connected to the <em>monitor's</em> Wi-Fi, not your regular network or venue Wi-Fi.</li>
-                            <li><strong>TrackMan:</strong> Connect to SSID "TrackMan_####" with password: <code>password</code></li>
-                            <li><strong>GCQuad:</strong> Connect to SSID "GCQuad_####" with password: <code>FSSPORTS</code></li>
-                            <li><strong>Using Bluetooth?</strong> Ensure the device is paired in iOS Bluetooth settings.</li>
-                            <li><strong>Check monitor status:</strong> Is it powered on with solid indicator lights (not blinking)?</li>
-                            <li><strong>Restart sequence:</strong> Force close MFE, power cycle the monitor, reconnect to monitor Wi-Fi, relaunch MFE.</li>
-                        </ol>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="wifi-off" style="width:20px;height:20px;"></i> Monitor Not Connecting</h4>
+                    <p>Check that you're connected to the <strong>monitor's Wi-Fi network</strong>, not venue Wi-Fi or your regular network.</p>
+                    <div class="solution">iPad Settings → Wi-Fi → Select TrackMan_#### or GCQuad_####</div>
+                </div>
 
-                    <div class="troubleshoot-card">
-                        <h3>❌ App Crashes on Launch</h3>
-                        <ol>
-                            <li><strong>Check iOS version:</strong> Did you recently update iOS? New iOS releases may not be certified yet. Contact IT to verify compatibility.</li>
-                            <li><strong>Force close and relaunch:</strong> Swipe up to close the app completely, then reopen.</li>
-                            <li><strong>Check for app updates:</strong> Open Company Portal or the install link to see if updates are available.</li>
-                            <li><strong>Reinstall the app:</strong> Uninstall and reinstall from <a href="https://my.taylormadegolf.com/myFittingExp/#/tmsupport/ios" target="_blank">my.taylormadegolf.com/myFittingExp/#/tmsupport/ios</a></li>
-                            <li><strong>⚠️ Before reinstalling:</strong> Ensure all fitting data is synced — offline data will be erased on reinstall.</li>
-                        </ol>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="x-circle" style="width:20px;height:20px;"></i> App Crashing</h4>
+                    <p>Check if iOS was recently updated. New iOS versions may need an app update. Force close and relaunch first.</p>
+                    <div class="solution">If persists after iOS update → Contact TaylorMade IT</div>
+                </div>
 
-                    <div class="troubleshoot-card">
-                        <h3>🔑 Login Issues</h3>
-                        <ol>
-                            <li><strong>Verify credentials:</strong> Use your TaylorMade MFE credentials (usually your email).</li>
-                            <li><strong>Check CAPS LOCK</strong> and re-enter password carefully.</li>
-                            <li><strong>Confirm internet:</strong> Ensure iPad has internet access (cellular or Wi-Fi to a network with internet).</li>
-                            <li><strong>Account locked?</strong> Too many failed attempts will lock the account. Contact TaylorMade IT to unlock, or wait for auto-unlock.</li>
-                            <li><strong>Forgot password?</strong> Contact TaylorMade IT for a password reset.</li>
-                        </ol>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="key-round" style="width:20px;height:20px;"></i> Can't Login</h4>
+                    <p>Verify your credentials and check CAPS LOCK. Account locked after too many attempts?</p>
+                    <div class="solution">Password reset → Call 800-864-7230</div>
+                </div>
 
-                    <div class="troubleshoot-card">
-                        <h3>⚙️ App Permissions Denied</h3>
-                        <ol>
-                            <li>If you denied Bluetooth, Local Network, or Location permissions on first launch, the app cannot connect to monitors.</li>
-                            <li>Go to iPad <strong>Settings → Privacy & Security</strong></li>
-                            <li>Find <strong>Bluetooth</strong>, <strong>Local Network</strong>, and <strong>Location Services</strong></li>
-                            <li>Ensure MFE (myFittingExp) is enabled for each</li>
-                            <li>Restart the MFE app</li>
-                        </ol>
-                    </div>
-
-                    <div class="troubleshoot-card">
-                        <h3>📊 Data Not Syncing</h3>
-                        <ol>
-                            <li><strong>Were you offline?</strong> If the fitting was done without internet, data syncs when you're back online. Open the app with internet to trigger sync.</li>
-                            <li><strong>Check sync status:</strong> Look for a sync indicator in the app (spinning icon or Settings → Sync).</li>
-                            <li><strong>Verify account:</strong> If data shows synced but missing online, confirm you're checking the correct account on the website.</li>
-                            <li><strong>Still missing?</strong> Escalate to TaylorMade IT — may require server-side investigation.</li>
-                        </ol>
-                    </div>
-
-                    <div class="troubleshoot-card">
-                        <h3>📞 Still Need Help?</h3>
-                        <p style="margin-bottom: 15px;">If these steps don't resolve your issue:</p>
-                        <p><strong>Call:</strong> <a href="tel:800-864-7230" style="font-size: 1.2rem;">800-864-7230</a></p>
-                        <p><strong>Email:</strong> <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a></p>
-                        <p><strong>Hours:</strong> 6 AM - 6 PM PST, Mon-Fri</p>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="cloud-off" style="width:20px;height:20px;"></i> Data Not Syncing</h4>
+                    <p>Fittings done offline will sync when back online. Open the app with internet connection to trigger sync.</p>
+                    <div class="solution">Check Settings → Sync status indicator</div>
                 </div>
             </div>
-        </section>
-    </div>
 
-    <!-- Troubleshooting - RETAIL (Windows) -->
-    <div class="content-section" id="retail-troubleshooting">
-        <section style="background: #f8f8f8; padding: 50px 0;">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Troubleshooting — Windows</h2>
+            <!-- Retail (Windows) -->
+            <div class="platform-content retail" style="display:none;">
+                <div class="panel-header">
+                    <h1>Windows Troubleshooting</h1>
                     <p>Common issues and solutions for retail partners</p>
                 </div>
 
-                <div class="troubleshooting-grid">
-                    <div class="troubleshoot-card">
-                        <h3>🚫 Launch Monitor Not Connecting</h3>
-                        <ol>
-                            <li><strong>Is Connector installed?</strong> Check system tray for TaylorMade Connector icon. If missing, <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">download and install</a>.</li>
-                            <li><strong>Is Connector running?</strong> If not in system tray, restart MFE (it launches the connector). Or open Services (services.msc) and start "TaylorMade Connector Service".</li>
-                            <li><strong>UAC Approval:</strong> Did you click "Yes" on the Windows UAC prompt? If you denied it, uninstall and reinstall the Connector.</li>
-                            <li><strong>Check connection type:</strong>
-                                <ul style="margin-top: 8px; margin-left: 20px;">
-                                    <li><strong>USB:</strong> Try a different port or cable. Check Device Manager — GCQuad should appear under network adapters.</li>
-                                    <li><strong>Ethernet:</strong> Verify cable is connected. PC should get an IP (TrackMan typically 192.168.51.x).</li>
-                                    <li><strong>Wi-Fi:</strong> Ensure PC is on the monitor's Wi-Fi network, not auto-reconnected to another network.</li>
-                                </ul>
-                            </li>
-                            <li><strong>Monitor ready?</strong> Indicator lights should be solid (not blinking). Power cycle if needed.</li>
-                            <li><strong>Restart sequence:</strong> Close MFE completely, power cycle monitor, relaunch MFE.</li>
-                        </ol>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="wifi-off" style="width:20px;height:20px;"></i> Monitor Not Connecting</h4>
+                    <p>Check that Connector Service is installed and running (system tray icon). Verify USB cable or network connection.</p>
+                    <div class="solution">Open Services (services.msc) → Find "TaylorMade Connector Service" → Start</div>
+                </div>
 
-                    <div class="troubleshoot-card">
-                        <h3>⬇️ Can't Install from Microsoft Store</h3>
-                        <ol>
-                            <li><strong>Verify Windows 11:</strong> MFE requires Windows 11 (64-bit). Windows 10 is not officially supported.</li>
-                            <li><strong>Store disabled?</strong> If your organization disabled Microsoft Store, contact your IT admin to enable it or perform an offline install.</li>
-                            <li><strong>Sign in required:</strong> You must be signed into the Store with a Microsoft account to install.</li>
-                            <li><strong>Try direct link:</strong> <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank">MFE on Microsoft Store</a></li>
-                            <li><strong>Check internet:</strong> Store errors sometimes occur due to connectivity issues.</li>
-                        </ol>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="plug" style="width:20px;height:20px;"></i> Connector Issues</h4>
+                    <p>If Connector won't install or start, you may have denied the UAC prompt or lack admin rights.</p>
+                    <div class="solution">Uninstall from Control Panel → Reinstall → Click YES on UAC prompt</div>
+                </div>
 
-                    <div class="troubleshoot-card">
-                        <h3>🔒 No Admin Rights for Connector</h3>
-                        <ol>
-                            <li>The Connector installation requires administrator privileges (one-time).</li>
-                            <li><strong>Option 1:</strong> Have your IT admin enter credentials at the UAC prompt.</li>
-                            <li><strong>Option 2:</strong> Have IT run the Connector installer with "Run as Administrator".</li>
-                            <li><strong>After install:</strong> Day-to-day use does not require admin rights.</li>
-                            <li><strong>Still blocked?</strong> Contact TaylorMade IT to discuss alternatives.</li>
-                        </ol>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="x-circle" style="width:20px;height:20px;"></i> App Won't Launch</h4>
+                    <p>Windows SmartScreen may be blocking the app. Check Event Viewer for crash details.</p>
+                    <div class="solution">Click "More info" → "Run anyway" if blocked by SmartScreen</div>
+                </div>
 
-                    <div class="troubleshoot-card">
-                        <h3>❌ App Won't Launch or Crashes</h3>
-                        <ol>
-                            <li><strong>Windows SmartScreen blocking?</strong> If you see "Windows protected your PC", click "More info" → "Run anyway".</li>
-                            <li><strong>Check Event Viewer:</strong> Windows Logs → Application for error entries at the crash time. Note the faulting module for IT.</li>
-                            <li><strong>Recent update?</strong> If crashes started after an app update, try reinstalling via Store "Repair" or uninstall/reinstall.</li>
-                            <li><strong>Antivirus blocking?</strong> Check if AV is quarantining MFE. Whitelist the app if needed.</li>
-                            <li><strong>Restart PC</strong> and try again.</li>
-                        </ol>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="key-round" style="width:20px;height:20px;"></i> Can't Login</h4>
+                    <p>Retail accounts are different from internal TaylorMade accounts. Check for activation email.</p>
+                    <div class="solution">Password reset → Contact TaylorMade IT</div>
+                </div>
 
-                    <div class="troubleshoot-card">
-                        <h3>⏳ Stuck on "Connecting to Connector Service"</h3>
-                        <ol>
-                            <li>This means the Connector service isn't running properly.</li>
-                            <li>Open <strong>Services</strong> (Win+R, type "services.msc", Enter)</li>
-                            <li>Find <strong>"TaylorMade Connector Service"</strong></li>
-                            <li>Check if it's Started. If not, right-click → Start.</li>
-                            <li>If it fails to start, note the error and reinstall the Connector.</li>
-                            <li><strong>Still stuck?</strong> Restart PC after Connector install to finalize service registration.</li>
-                        </ol>
-                    </div>
-
-                    <div class="troubleshoot-card">
-                        <h3>🔑 Login Issues</h3>
-                        <ol>
-                            <li><strong>Correct credentials?</strong> Retail accounts are different from internal TaylorMade employee accounts.</li>
-                            <li><strong>New user?</strong> Check for an activation email from TaylorMade. You may need to activate your account first.</li>
-                            <li><strong>Check CAPS LOCK</strong> and re-enter password carefully.</li>
-                            <li><strong>Account locked?</strong> Contact TaylorMade IT to unlock (or wait for auto-unlock).</li>
-                            <li><strong>Server error with correct credentials?</strong> Escalate to Tier 2 — possible backend issue.</li>
-                        </ol>
-                    </div>
-
-                    <div class="troubleshoot-card">
-                        <h3>🔌 Connector Service Problems</h3>
-                        <ol>
-                            <li><strong>Not installed:</strong> <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">Download here</a>, run installer, click "Yes" on UAC.</li>
-                            <li><strong>Won't start:</strong> Open Services (services.msc), find "TaylorMade Connector Service", right-click → Start.</li>
-                            <li><strong>Crashes on start:</strong> Note any error, then uninstall from Control Panel → Programs, reboot, reinstall.</li>
-                            <li><strong>Denied UAC earlier:</strong> Uninstall Connector, reinstall, and click "Yes" this time.</li>
-                            <li><strong>Check firewall:</strong> Ensure the Connector is allowed through Windows Firewall.</li>
-                        </ol>
-                    </div>
-
-                    <div class="troubleshoot-card">
-                        <h3>🔄 Complete Reinstallation</h3>
-                        <p style="margin-bottom: 12px; font-weight: 600;">If issues persist after other troubleshooting:</p>
-                        <ol>
-                            <li><strong>Uninstall MFE:</strong> Settings → Apps → Installed Apps → Find MFE → Uninstall</li>
-                            <li><strong>Uninstall Connector:</strong> Control Panel → Programs and Features → TaylorMade Connector Service → Uninstall</li>
-                            <li><strong>Reboot</strong> the PC</li>
-                            <li><strong>Reinstall MFE:</strong> <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank">Microsoft Store</a></li>
-                            <li><strong>Reinstall Connector:</strong> Let MFE prompt you, or <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank">download directly</a></li>
-                        </ol>
-                    </div>
-
-                    <div class="troubleshoot-card">
-                        <h3>📊 Data Not Syncing</h3>
-                        <ol>
-                            <li><strong>Check internet:</strong> Can you browse websites? MFE needs internet for cloud sync.</li>
-                            <li><strong>Check sync status:</strong> Look in app Settings → Sync for pending data indicator.</li>
-                            <li><strong>Firewall:</strong> Ensure *.taylormadegolf.com is allowed. Try a mobile hotspot as a test.</li>
-                            <li><strong>Verify account:</strong> If synced but not showing on website, confirm you're checking the correct account.</li>
-                            <li><strong>Data loss suspected?</strong> Escalate to TaylorMade IT immediately for server-side investigation.</li>
-                        </ol>
-                    </div>
-
-                    <div class="troubleshoot-card">
-                        <h3>📞 Still Need Help?</h3>
-                        <p style="margin-bottom: 15px;">If these steps don't resolve your issue:</p>
-                        <p><strong>Call:</strong> <a href="tel:800-864-7230" style="font-size: 1.2rem;">800-864-7230</a></p>
-                        <p><strong>Email:</strong> <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a></p>
-                        <p><strong>Hours:</strong> 6 AM - 6 PM PST, Mon-Fri</p>
-                    </div>
+                <div class="trouble-item">
+                    <h4><i data-lucide="refresh-cw" style="width:20px;height:20px;"></i> Complete Reinstall</h4>
+                    <p>If issues persist, do a clean reinstall of both MFE and Connector Service.</p>
+                    <div class="solution">Settings → Apps → Uninstall MFE → Control Panel → Uninstall Connector → Reboot → Reinstall both</div>
                 </div>
             </div>
-        </section>
-    </div>
-
-    <!-- Quick Links -->
-    <section class="container section">
-        <div class="section-header">
-            <h2>Quick Links</h2>
         </div>
-        <div class="download-buttons">
-            <a href="https://my.taylormadegolf.com/myFittingExp/#/tmsupport/ios" target="_blank" class="download-btn">📱 MFE for iPad</a>
-            <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank" class="download-btn">💻 MFE for Windows</a>
-            <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank" class="download-btn">🔌 Connector Service</a>
-            <a href="https://support.trackman.com" target="_blank" class="download-btn" style="background: #444;">TrackMan Support</a>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <h3>TaylorMade IT Support</h3>
-        <p style="margin-bottom: 15px;">My Fitting EXP Support Portal</p>
-        <p><a href="tel:800-864-7230">800-864-7230</a> | <a href="mailto:ithelpdesk@taylormadegolf.com">ithelpdesk@taylormadegolf.com</a></p>
-        <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">6 AM - 6 PM PST, Monday - Friday</p>
-        <p style="margin-top: 25px; font-size: 0.8rem; opacity: 0.5;">© 2025 TaylorMade Golf Company. All Rights Reserved.</p>
-    </footer>
+        <!-- SUPPORT TAB -->
+        <div id="tab-support" class="tab-panel">
+            <div class="panel-header">
+                <h1>Get Support</h1>
+                <p>Contact the right team for your issue</p>
+            </div>
+
+            <div class="support-grid">
+                <div class="support-card primary">
+                    <i data-lucide="headset" style="width:48px;height:48px;"></i>
+                    <h3>TaylorMade IT</h3>
+                    <span class="card-badge" style="display:inline-block;margin:10px 0;">First Contact</span>
+                    <div class="phone"><a href="tel:800-864-7230">800-864-7230</a></div>
+                    <p><a href="mailto:MFE@tmgolf.freshservice.com">MFE@tmgolf.freshservice.com</a></p>
+                    <p class="hours">6 AM – 6 PM PST, Mon–Fri</p>
+                    <p style="margin-top:15px;font-size:0.9rem;">App issues, login problems, data sync, connectivity help</p>
+                </div>
+
+                <div class="support-card">
+                    <i data-lucide="radar" style="width:36px;height:36px;"></i>
+                    <h3>TrackMan</h3>
+                    <div class="phone"><a href="tel:+18102259855">+1 (810) 225-9855</a></div>
+                    <p><a href="https://support.trackman.com" target="_blank">support.trackman.com</a></p>
+                    <p class="hours">Hardware issues, calibration, not reading shots</p>
+                </div>
+
+                <div class="support-card">
+                    <i data-lucide="scan" style="width:36px;height:36px;"></i>
+                    <h3>Foresight Sports</h3>
+                    <div class="phone"><a href="tel:+18588800179">+1 (858) 880-0179</a></div>
+                    <p><a href="https://support.foresightsports.com" target="_blank">support.foresightsports.com</a></p>
+                    <p class="hours">Hardware issues, firmware, camera/sensor problems</p>
+                </div>
+            </div>
+
+            <div class="panel-header" style="margin-top:50px;">
+                <h1>Quick Links</h1>
+            </div>
+
+            <div class="quick-links">
+                <a href="https://my.taylormadegolf.com/myFittingExp/#/tmsupport/ios" target="_blank" class="quick-link">
+                    <i data-lucide="tablet" style="width:18px;height:18px;"></i>
+                    MFE for iPad
+                </a>
+                <a href="https://apps.microsoft.com/detail/9nqltxj70nvd?hl=en-US&gl=US" target="_blank" class="quick-link">
+                    <i data-lucide="monitor" style="width:18px;height:18px;"></i>
+                    MFE for Windows
+                </a>
+                <a href="https://mfe.taylormadegolf.com/connectorservice/Download.html" target="_blank" class="quick-link">
+                    <i data-lucide="plug" style="width:18px;height:18px;"></i>
+                    Connector Service
+                </a>
+                <a href="https://support.foresightsports.com/support/hardware/gcquad" target="_blank" class="quick-link secondary">
+                    <i data-lucide="hard-drive" style="width:18px;height:18px;"></i>
+                    GCQuad Firmware
+                </a>
+                <a href="https://support.foresightsports.com/support/hardware/quadmax" target="_blank" class="quick-link secondary">
+                    <i data-lucide="hard-drive" style="width:18px;height:18px;"></i>
+                    QuadMAX Firmware
+                </a>
+                <a href="https://support.trackmangolf.com/hc/en-us/articles/40824844200475-TM4-Latest-Firmware-Download-2-9-4" target="_blank" class="quick-link secondary">
+                    <i data-lucide="hard-drive" style="width:18px;height:18px;"></i>
+                    TrackMan 4 Firmware
+                </a>
+                <a href="https://apps.apple.com/us/app/foresight/id6446035078" target="_blank" class="quick-link secondary">
+                    <i data-lucide="smartphone" style="width:18px;height:18px;"></i>
+                    Foresight App
+                </a>
+            </div>
+        </div>
+
+    </main>
 
     <script>
-        function showVersion(version) {
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Tab switching
+        function showTab(tabId) {
             // Update buttons
-            document.querySelectorAll('.version-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
 
-            // Update main content sections
-            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-            document.getElementById(version + '-content').classList.add('active');
-            document.getElementById(version + '-troubleshooting').classList.add('active');
+            // Update panels
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
 
-            // Scroll to installation
-            document.getElementById('installation-' + version).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Platform switching
+        function setPlatform(platform) {
+            // Update buttons
+            document.querySelectorAll('.platform-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.platform-content.internal').forEach(el => {
+                el.style.display = platform === 'internal' ? 'block' : 'none';
+            });
+            document.querySelectorAll('.platform-content.retail').forEach(el => {
+                el.style.display = platform === 'retail' ? 'block' : 'none';
+            });
         }
     </script>
 </body>
